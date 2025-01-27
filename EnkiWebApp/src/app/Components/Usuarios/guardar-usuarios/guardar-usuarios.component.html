@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h6 style="color:#0056b3; text-align: center;">Ingresa los datos del nuevo usuario</h6>
+            <form>
+                <div class="form-group">
+                    <label for="id" style="color:#0056b3; font-weight: 200;">Id</label>
+                    <input type="number" name="id" class="form-control" [(ngModel)]="usuarios.id" required>
+
+                    <label for="nombre" style="color:#0056b3 ; font-weight: 200;">Nombre </label>
+                    <input type="text" name="nombre" class="form-control" [(ngModel)]="usuarios.nombre" required>
+
+                    <label for="correo" style="color:#0056b3; font-weight: 200;">Correo</label>
+                    <input type="mail" name="correo" class="form-control" [(ngModel)]="usuarios.correo" required>
+
+                    <label for="mensaje" style="color:#0056b3 ; font-weight: 200;">Mensaje </label>
+                    <input type="text" name="mensaje" class="form-control" [(ngModel)]="usuarios.mensaje" required>
+
+                </div>
+                <div class="button">
+                    <button type="button" class="btn btn-primary" style=" background: #0056b3;" (click)="guardarUsuarioComponent()">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

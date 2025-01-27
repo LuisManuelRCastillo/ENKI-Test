@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navegación principal -->
+  <nav class="navbar">
+    <a href="/" class="link">
+      <img src="https://cdn.prod.website-files.com/65fdefd948ee62e29dd72dab/6603f3314d2ff4f85f600e5f_enki_logo.png" alt="" style="width: 60px;">
+    </a>
+    <a (click)="navigateTo('/listarP')" style="color: #191617;" class="link">Productos</a>
+    <a (click)="navigateTo('/listarT')" style="color: #191617;" class="link">Tareas</a>
+    <a (click)="navigateTo('/listarU')" style="color: #191617;" class="link">Usuarios</a>
+  </nav>
+  <div class="main-content">
+    <div class="left-content">
+      <h1 style="font-weight: 900; color:#191617;">SOLUCION DE DATOS PARA EL FUTURO</h1> <br>
+      <p style="color: #191617;">Datos que optimizan el potencial humano</p>
+    </div>
+    <div class="right">
+      <img src="https://cdn.prod.website-files.com/65fdefd948ee62e29dd72dab/660fe47648c5b6a8ebff7cc0_enki3.png" alt="Imagen">
+    </div>
+  </div>
+<footer style="text-align: center;"> ENKI 2025</footer>
+</body>
+</html>
+<router-outlet></router-outlet>

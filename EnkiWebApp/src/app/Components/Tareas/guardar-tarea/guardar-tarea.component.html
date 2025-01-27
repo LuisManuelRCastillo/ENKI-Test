@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h6 style="color:#0056b3; text-align: center;">Ingresa los datos de la nueva tarea</h6>
+            <form>
+                <div class="form-group">
+                    <label for="id" style="color:#0056b3; font-weight: 200;">Id</label>
+                    <input type="number" name="id" class="form-control" [(ngModel)]="tarea.id" required>
+
+                    <label for="nombre" style="color:#0056b3 ; font-weight: 200;">Descripcion </label>
+                    <input type="text" name="nombre" class="form-control" [(ngModel)]="tarea.descripcion" required>
+
+                    <label for="precio" style="color:#0056b3; font-weight: 200;">Estatus</label>
+                    <input type="number" name="precio" class="form-control" [(ngModel)]="tarea.status" required>
+                </div>
+                <div class="button">
+                    <button type="button" class="btn btn-primary" style=" background: #0056b3;" (click)="guardarTareaComponent()">Guardar Tarea</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
