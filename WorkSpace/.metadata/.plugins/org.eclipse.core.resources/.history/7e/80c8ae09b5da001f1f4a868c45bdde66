@@ -1,0 +1,55 @@
+package com.mx.Producto.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mx.Producto.Model.Producto;
+import com.mx.Producto.Service.ProductoServiceImp;
+
+@RestController
+@RequestMapping(path="/productos")
+@CrossOrigin
+public class ProductoAPI {
+	
+	@Autowired
+	private ProductoServiceImp service;
+	
+	
+	@GetMapping
+	public ResponseEntity<?> listar(){
+		List<Producto> prd = service.listar();
+		if(prd.isEmpty()) {
+			return ResponseEntity.ofNullable("No  hay registros en la base de datos");
+		}else {
+			return ResponseEntity.ok(prd);
+		}
+	}
+	
+	@PostMapping
+	public ResponseEntity<?> guardar(@RequestBody Producto producto){
+		try {
+			Producto guardado = service.guardar(producto);
+			if(guardado != null) {
+				service.guardar(producto);
+				return ResponseEntity.ok("Se agregó correctamente");
+			}else {
+				return ResponseEntity.status(HttpStatus.FOUND).body("Este registro ya existe en la base de datos");
+			}
+		}catch(IllegalArgumentException e ){
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+		
+	}
+	
+	
+
+}

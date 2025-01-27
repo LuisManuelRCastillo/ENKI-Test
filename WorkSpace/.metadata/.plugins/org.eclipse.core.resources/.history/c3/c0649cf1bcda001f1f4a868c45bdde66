@@ -1,0 +1,48 @@
+package com.mx.Tareas.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mx.Tareas.Model.Tareas;
+import com.mx.Tareas.Service.TareasServiceImp;
+
+@RestController
+@RequestMapping(path="/tareas")
+@CrossOrigin
+
+public class TareasAPI {
+	@Autowired
+	private TareasServiceImp service;
+
+	public ResponseEntity<?> listar(){
+		List<Tareas> tarea = service.listar();
+		if(tarea.isEmpty()) {
+			return ResponseEntity.ofNullable("No hay registros en la base de datos");
+		}else {
+			return ResponseEntity.ok(tarea);
+		}
+				
+	}
+	
+	public ResponseEntity<?> guardar(@RequestBody Tareas tareas){
+		try {
+			Tareas guardada = service.guardar(tareas);
+			if(guardada != null) {
+				service.guardar(tareas);
+				return ResponseEntity.ok("La tarea se registró correctamente");
+			}else {
+				return ResponseEntity.
+			}
+			
+		}catch(IllegalArgumentException e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		}
+	}
+}

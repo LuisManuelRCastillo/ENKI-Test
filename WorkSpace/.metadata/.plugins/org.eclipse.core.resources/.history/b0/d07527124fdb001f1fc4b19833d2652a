@@ -1,0 +1,24 @@
+spring.application.name=APIGateway
+
+
+
+#Delcarar el puerto para el APIGateway
+server.port=9000
+#Habilitar como DiscoveryClient
+spring.cloud.service-registry.auto-registration.enabled=true
+#configuracion de los servicios a registrar y gestionar
+
+#tIENDA
+#Es el nombre del microservicio que va a gestionar
+spring.cloud.gateway.mvc.routes[0].id=Productos
+#El URI especifica la ruta con el puerto del microservicio a consumir
+spring.cloud.gateway.mvc.routes[0].uri=http://localhost:8002
+#Predicates se refiere a los endPoint de la clase controlador de cada metodo a consumir
+spring.cloud.gateway.mvc.routes[0].predicates=Path=/P/**
+
+
+spring.cloud.gateway.mvc.routes[1].id=Tareas
+#El URI especifica la ruta con el puerto del microservicio a consumir
+spring.cloud.gateway.mvc.routes[1].uri=http://localhost:8001
+#Predicates se refiere a los endPoint de la clase controlador de cada metodo a consumir
+spring.cloud.gateway.mvc.routes[1].predicates=Path=/T/**
